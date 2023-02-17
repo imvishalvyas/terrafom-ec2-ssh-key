@@ -87,7 +87,7 @@ resource "aws_instance" "terra-vm" {
     type        = "ssh"
     user        = "ubuntu"
     private_key = tls_private_key.rsa-key.private_key_pem  #path of pem file
-    host        = aws_instance.terra1.public_ip
+    host        = aws_instance.terra-vm.public_ip
   }
 
   provisioner "file" {
@@ -107,5 +107,5 @@ resource "aws_instance" "terra-vm" {
 }
 
 output "ec2_ip" {
-  value = aws_instance.terra1.public_ip
+  value = aws_instance.terra-vm.public_ip
 }
